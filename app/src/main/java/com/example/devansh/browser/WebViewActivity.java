@@ -34,9 +34,9 @@ public class WebViewActivity extends AppCompatActivity {
 
         String url = intent.getStringExtra(InputActivity.EXTRA_URL);
 
-        Log.d("registerContextMenu", "Registering ContextMenu...");
+        //Log.d("registerContextMenu", "Registering ContextMenu...");
         //registerForContextMenu(webView);
-        Log.d("registerContextMenu", "ContextMenu Registered");
+        //Log.d("registerContextMenu", "ContextMenu Registered");
 
         webView = (WebView) findViewById(R.id.webView);
         webView.loadUrl(url);
@@ -70,7 +70,7 @@ public class WebViewActivity extends AppCompatActivity {
         webView.setWebViewClient(new WebViewClient());
     }
 
-    @Override
+    /*@Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         Log.d("onCreateContextMenu", "Entering onCreate()...");
         super.onCreateContextMenu(menu, v, menuInfo);
@@ -99,7 +99,7 @@ public class WebViewActivity extends AppCompatActivity {
             Log.d("onCreateContextMenu", "Image Saved");
         }
         Log.d("onCreateContextMenu", "Leaving onCreate()...");
-    }
+    }*/
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent keyEvent) {
