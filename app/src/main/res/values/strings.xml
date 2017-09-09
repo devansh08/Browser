@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Browser</string>
+	<string-array name="select_array">
+		<item></item>
+		<item>https</item>
+		<item>http</item>
+		<item>Google</item>
+		<item>DuckDuckGo</item>
+	</string-array>
+</resources>
