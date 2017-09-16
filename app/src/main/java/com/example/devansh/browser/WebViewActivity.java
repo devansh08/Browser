@@ -2,6 +2,7 @@ package com.example.devansh.browser;
 
 import android.app.DownloadManager;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -21,7 +22,7 @@ import android.widget.Toast;
 
 public class WebViewActivity extends AppCompatActivity {
 
-    public static final int ID_SAVE = 10;
+    //public static final int ID_SAVE = 10;
 
     WebView webView;
 
@@ -39,13 +40,17 @@ public class WebViewActivity extends AppCompatActivity {
         //Log.d("registerContextMenu", "ContextMenu Registered");
 
         webView = (WebView) findViewById(R.id.webView);
-        webView.loadUrl(url);
+
+        if(savedInstanceState == null) {
+            webView.loadUrl(url);
+        } else {
+            webView.restoreState(savedInstanceState);
+        }
 
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setAllowFileAccess(true);
         webSettings.setAppCacheEnabled(true);
-        webSettings.setBuiltInZoomControls(true);
         webSettings.setSupportZoom(true);
 
         webView.setDownloadListener(new DownloadListener() {
@@ -109,5 +114,15 @@ public class WebViewActivity extends AppCompatActivity {
         }
 
         return super.onKeyDown(keyCode, keyEvent);
+    }
+
+    /*@Override
+    public void onConfigurationChanged(Configuration configuration) {
+        super.onConfigurationChanged(configuration);
+    }*/
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        webView.saveState(outState);
     }
 }
